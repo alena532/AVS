@@ -223,9 +223,9 @@ end TCL_Generic;
       <a name="font" val="SansSerif plain 12"/>
       <a name="text" val="RESULT"/>
     </comp>
+    <wire from="(110,150)" to="(240,150)"/>
     <wire from="(110,230)" to="(200,230)"/>
     <wire from="(110,70)" to="(180,70)"/>
-    <wire from="(120,150)" to="(240,150)"/>
     <wire from="(210,70)" to="(280,70)"/>
     <wire from="(230,230)" to="(290,230)"/>
     <wire from="(240,150)" to="(240,210)"/>
