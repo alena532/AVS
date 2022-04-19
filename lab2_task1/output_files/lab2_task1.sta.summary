@@ -1,0 +1,101 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'sign'
+Slack : -2.525
+TNS   : -2.525
+
+Type  : Slow 1100mV 85C Model Setup 'clk'
+Slack : -2.339
+TNS   : -6.838
+
+Type  : Slow 1100mV 85C Model Hold 'clk'
+Slack : 0.425
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'sign'
+Slack : 1.217
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk'
+Slack : -0.538
+TNS   : -3.851
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'sign'
+Slack : 0.372
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'sign'
+Slack : -2.611
+TNS   : -2.611
+
+Type  : Slow 1100mV 0C Model Setup 'clk'
+Slack : -2.231
+TNS   : -6.640
+
+Type  : Slow 1100mV 0C Model Hold 'clk'
+Slack : 0.399
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'sign'
+Slack : 1.247
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk'
+Slack : -0.538
+TNS   : -3.972
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'sign'
+Slack : 0.430
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'clk'
+Slack : -1.389
+TNS   : -2.662
+
+Type  : Fast 1100mV 85C Model Setup 'sign'
+Slack : -0.833
+TNS   : -0.833
+
+Type  : Fast 1100mV 85C Model Hold 'clk'
+Slack : 0.127
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'sign'
+Slack : 0.795
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk'
+Slack : -0.088
+TNS   : -0.439
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'sign'
+Slack : 0.112
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'clk'
+Slack : -1.209
+TNS   : -2.299
+
+Type  : Fast 1100mV 0C Model Setup 'sign'
+Slack : -0.720
+TNS   : -0.720
+
+Type  : Fast 1100mV 0C Model Hold 'clk'
+Slack : 0.047
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'sign'
+Slack : 0.725
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk'
+Slack : -0.092
+TNS   : -0.458
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'sign'
+Slack : 0.097
+TNS   : 0.000
+
+------------------------------------------------------------
