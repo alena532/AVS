@@ -1,81 +1,90 @@
-module flopr(input logic clk, input logic reset,
-	input logic [5:0] d, output logic [5:0] q);
-	always_ff @(posedge clk)
-		if (reset) q <= 5'b0;
-		else q <= d; 
+
+module lab2_task1(input  logic clk,
+                input  logic reset,
+                input  logic left, right,
+                output logic lc, lb, la, ra, rb, rc);
+
+logic s0, s1;
+logic en, r_lr;
+logic a, b, c;
+
+
+
+logic nexts1, nexts0;
+xor nextS1State(nexts1, s0, s1); //s1' = s1 xor s0
+not nextS0State(nexts0, s0); //s0' = ^s0
+
+
+
+logic ns1, ns0,orns1ns0;
+not notS1(ns1, s1);
+not notS0(ns0, s0);
+
+
+logic tempCh, tempEn;
+xor startmode(tempCh, left, right); //temp check (left = 0 and right = 0) or (left = 1 and right = 1)
+and EN0(tempEn, ns0, ns1); // en = ^s1 and ^s0
+and EN1(en, tempCh, tempEn); // en = (right xor left) and (^s1 and ^s0) 
+
+logic sCl;
+logic temp;
+or f(temp,s1,s0);
+or stateCalc(sCl, en, temp);
+
+
+
+flopren reg_lr(clk, reset, en, left, r_lr);// to preserve Left/Right control  // left = 0 => right
+flopren reg_state0(clk, reset, sCl, nexts0, s0);
+flopren reg_state1(clk, reset, sCl, nexts1, s1);
+//flopr reg_state0(clk, reset, nexts0, s0);
+//flopr reg_state1(clk, reset, nexts1, s1);
+
+
+
+and (a,s0, s0); // a = s1 or s0
+or (b, s1, s0); // b = s1 xor s0
+and(c, ns0, s1); // c = ^s1 and s0
+
+//---------------------------------
+
+logic pLa, pLb, pLc, pRa, pRb, pRc;
+
+and preOutLa(pLa, r_lr, a);
+and preOutLb(pLb, r_lr, b);
+and preOutLc(pLc, r_lr, c);
+
+logic nt;
+not nTurn(nt, r_lr);
+
+and preOutRa(pRa, nt, a);
+and preOutRb(pRb, nt, b);
+and preOutRc(pRc, nt, c);
+
+assign la = pLa;
+assign lb = pLb;
+assign lc = pLc;
+
+assign ra = pRa;
+assign rb = pRb;
+assign rc = pRc;
+
+
 endmodule
 
 
-module lab2_task1(input logic clk, input logic reset,
-	input logic left, right,sign,output logic la,lb,lc,ra,rb,rc);
-	logic l,r,a,b,c;
-	logic l1,r1,a1,b1,c1;
-	flopr fl(clk,reset,{l,r,a,b,c},{l1,r1,a1,b1,c1});
-	
-	next_state next(left,right,sign,l1,r1,a1,b1,c1,l,r,a,b,c);
-	decoder dec(l,r,a,b,c,la,lb,lc,ra,rb,rc);
+
+module flopren(input  logic clk, reset, en, d,
+            output logic q);
+            
+  always_ff @(posedge clk, posedge reset)
+    if (reset) q <= 0;
+    else if (en) q <= d;
 endmodule
 
-
-
-
-
-module decoder (input logic input_l,input_r,input_a,input_b,input_c,output logic la,lb,lc,ra,rb,rc);
-	assign la=input_l & input_a;
-	assign lb=input_l & input_b;
-	assign lc=input_l & input_c;
-	
-	assign ra=input_r & input_a;
-	assign rb=input_r & input_b;
-	assign rc=input_r & input_c;
+module flopr(input  logic clk, reset, d,
+            output logic q);
+            
+  always_ff @(posedge clk, posedge reset)
+    if (reset) q <= 0;
+    else q <= d;
 endmodule
-
-
-
-
-
-module next_state(input logic left,right,sign,input_l,input_r,input_a,input_b,input_c,output logic l,r,a,b,c);
-	always @(input_l,~input_r,right,input_b,~input_c)
-	if(sign==0)
-	begin	
-	a = (~input_a&~input_b&~input_c&(left|right))|(~input_a&input_b&input_c);
-	r = (~input_l&~input_r&right)|(input_r&input_b&((input_a&~input_c)|(~input_a&input_c)));
-	l = (~input_l&~input_r&left)|(input_l&input_b&((input_a&~input_c)|(~input_a&input_c)));
-	b = (~input_a&~input_b&~input_c&(left|right))|(input_a&input_b&~input_c)|(~input_a&input_b&input_c);
-	c = input_a&input_b&~input_c;
-	end
-	else
-	begin
-	a = (~input_a&~input_b&~input_c&(left|right))|(~input_a&input_b&input_c);
-	 r = (~input_l&~input_r&right)|(input_r&input_b&((~input_a&input_c)));
-	 l = (~input_l&~input_r&left)|(input_l&input_b&((input_a&~input_c)|(~input_a&input_c)));
-	b = (~input_a&~input_b&~input_c&(left|right))|(~input_a&input_b&input_c);
-	end
-	
-	
-				
-			
-		
-				
-		
-	
-	//assign a = (~input_a&~input_b&~input_c&(left|right))|(~input_a&input_b&input_c);
-	//always @( input_l,input_r,left,input_b,input_c)
-	//if(sign1==0)
-		//assign l = (~input_l&~input_r&left)|(input_l&input_b&((input_a&~input_c)|(~input_a&input_c)));
-		//assign r = (~input_l&~input_r&right)|(input_r&input_b&((input_a&~input_c)|(~input_a&input_c)));
-		//assign b = (~input_a&~input_b&~input_c&(left|right))|(input_a&input_b&~input_c)|(~input_a&input_b&input_c);
-		//assign c = input_a&input_b&~input_c;
-	//else 
-		//assign l = (~input_l&~input_r&left)|(input_l&input_b&((~input_a&input_c)));
-		//assign r = (~input_l&~input_r&right)|(input_r&input_b&((~input_a&input_c)));
-		//assign b = (~input_a&~input_b&~input_c&(left|right))|(~input_a&input_b&input_c);
-	
-		
-	
-	
-	
-	
-	
-endmodule
-

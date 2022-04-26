@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab2_task1
-Tue Apr 19 11:02:26 2022
+Mon Apr 25 18:18:52 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -13,8 +13,8 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. User-Specified and Inferred Latches
-  9. General Register Statistics
+  8. General Register Statistics
+  9. Port Connectivity Checks: "next_state:next"
  10. Port Connectivity Checks: "flopr:fl"
  11. Post-Synthesis Netlist Statistics for Top Partition
  12. Elapsed Time Per Partition
@@ -44,14 +44,14 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Apr 19 11:02:26 2022       ;
+; Analysis & Synthesis Status     ; Successful - Mon Apr 25 18:18:52 2022       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; lab2_task1                                  ;
 ; Top-level Entity Name           ; lab2_task1                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 5                                           ;
-; Total pins                      ; 11                                          ;
+; Total registers                 ; 4                                           ;
+; Total pins                      ; 10                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -182,50 +182,38 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+---------------+
 ; Resource                                    ; Usage         ;
 +---------------------------------------------+---------------+
-; Estimate of Logic utilization (ALMs needed) ; 11            ;
+; Estimate of Logic utilization (ALMs needed) ; 5             ;
 ;                                             ;               ;
-; Combinational ALUT usage for logic          ; 17            ;
-;     -- 7 input functions                    ; 1             ;
-;     -- 6 input functions                    ; 4             ;
-;     -- 5 input functions                    ; 5             ;
-;     -- 4 input functions                    ; 3             ;
-;     -- <=3 input functions                  ; 4             ;
+; Combinational ALUT usage for logic          ; 7             ;
+;     -- 7 input functions                    ; 0             ;
+;     -- 6 input functions                    ; 3             ;
+;     -- 5 input functions                    ; 4             ;
+;     -- 4 input functions                    ; 0             ;
+;     -- <=3 input functions                  ; 0             ;
 ;                                             ;               ;
-; Dedicated logic registers                   ; 5             ;
+; Dedicated logic registers                   ; 4             ;
 ;                                             ;               ;
-; I/O pins                                    ; 11            ;
+; I/O pins                                    ; 10            ;
 ;                                             ;               ;
 ; Total DSP Blocks                            ; 0             ;
 ;                                             ;               ;
-; Maximum fan-out node                        ; flopr:fl|q[3] ;
+; Maximum fan-out node                        ; flopr:fl|q[2] ;
 ; Maximum fan-out                             ; 7             ;
-; Total fan-out                               ; 105           ;
-; Average fan-out                             ; 2.39          ;
+; Total fan-out                               ; 59            ;
+; Average fan-out                             ; 1.90          ;
 +---------------------------------------------+---------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                            ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name         ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------+-------------+--------------+
-; |lab2_task1                ; 17 (0)              ; 5 (0)                     ; 0                 ; 0          ; 11   ; 0            ; |lab2_task1                 ; lab2_task1  ; work         ;
-;    |decoder:dec|           ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2_task1|decoder:dec     ; decoder     ; work         ;
-;    |flopr:fl|              ; 5 (5)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2_task1|flopr:fl        ; flopr       ; work         ;
-;    |next_state:next|       ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2_task1|next_state:next ; next_state  ; work         ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------+-------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                        ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name     ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------+-------------+--------------+
+; |lab2_task1                ; 7 (0)               ; 4 (0)                     ; 0                 ; 0          ; 10   ; 0            ; |lab2_task1             ; lab2_task1  ; work         ;
+;    |decoder:dec|           ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2_task1|decoder:dec ; decoder     ; work         ;
+;    |flopr:fl|              ; 4 (4)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |lab2_task1|flopr:fl    ; flopr       ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+---------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                               ;
-+----------------------------------------------------+---------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
-+----------------------------------------------------+---------------------+------------------------+
-; next_state:next|c                                  ; sign                ; yes                    ;
-; Number of user-specified and inferred latches = 1  ;                     ;                        ;
-+----------------------------------------------------+---------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
 +------------------------------------------------------+
@@ -233,7 +221,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 5     ;
+; Total registers                              ; 4     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -243,13 +231,24 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 
 
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "next_state:next"                                                                                         ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                  ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; sign ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; zero ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "flopr:fl"                                                                                                                                 ;
 +------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                                                                                   ;
 +------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
-; d    ; Input  ; Warning  ; Input port expression (5 bits) is smaller than the input port (6 bits) it drives.  Extra input bit(s) "d[5..5]" will be connected to GND. ;
-; q    ; Output ; Warning  ; Output or bidir port (6 bits) is wider than the port expression (5 bits) it drives; bit(s) "q[5..5]" have no fanouts                      ;
+; d    ; Input  ; Warning  ; Input port expression (7 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "d[7..7]" will be connected to GND. ;
+; q    ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (7 bits) it drives; bit(s) "q[7..7]" have no fanouts                      ;
+; q[1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                       ;
 +------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -258,21 +257,17 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 5                           ;
-;     plain             ; 5                           ;
-; arriav_lcell_comb     ; 17                          ;
-;     extend            ; 1                           ;
-;         7 data inputs ; 1                           ;
-;     normal            ; 16                          ;
-;         2 data inputs ; 2                           ;
-;         3 data inputs ; 2                           ;
-;         4 data inputs ; 3                           ;
-;         5 data inputs ; 5                           ;
-;         6 data inputs ; 4                           ;
-; boundary_port         ; 11                          ;
+; arriav_ff             ; 4                           ;
+;     plain             ; 4                           ;
+; arriav_lcell_comb     ; 8                           ;
+;     normal            ; 8                           ;
+;         0 data inputs ; 1                           ;
+;         5 data inputs ; 4                           ;
+;         6 data inputs ; 3                           ;
+; boundary_port         ; 10                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 2.00                        ;
-; Average LUT depth     ; 1.68                        ;
+; Max LUT depth         ; 1.00                        ;
+; Average LUT depth     ; 0.88                        ;
 +-----------------------+-----------------------------+
 
 
@@ -291,63 +286,80 @@ Note: All latches listed above may not be present at the end of synthesis due to
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue Apr 19 11:02:13 2022
+    Info: Processing started: Mon Apr 25 18:18:38 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab2_task1 -c lab2_task1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Warning (10261): Verilog HDL Event Control warning at lab2_task1.sv(54): Event Control contains a complex event expression File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 54
 Info (12021): Found 4 design units, including 4 entities, in source file lab2_task1.sv
     Info (12023): Found entity 1: flopr File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 1
-    Info (12023): Found entity 2: lab2_task1 File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 10
-    Info (12023): Found entity 3: decoder File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 26
-    Info (12023): Found entity 4: next_state File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 40
+    Info (12023): Found entity 2: lab2_task1 File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 9
+    Info (12023): Found entity 3: decoder File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 23
+    Info (12023): Found entity 4: next_state File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 37
+Warning (10236): Verilog HDL Implicit Net warning at lab2_task1.sv(13): created implicit net for "zzero1" File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 13
 Info (12127): Elaborating entity "lab2_task1" for the top level hierarchy
-Info (12128): Elaborating entity "flopr" for hierarchy "flopr:fl" File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 16
-Info (12128): Elaborating entity "next_state" for hierarchy "next_state:next" File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 18
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(55): variable "sign" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 55
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(57): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 57
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(57): variable "input_c" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 57
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(57): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 57
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(58): variable "input_r" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 58
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(58): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 58
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(58): variable "input_c" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 58
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(59): variable "input_r" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(59): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(59): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(59): variable "input_c" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(60): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 60
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(60): variable "input_c" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 60
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(60): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 60
+Info (12128): Elaborating entity "flopr" for hierarchy "flopr:fl" File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 13
+Info (12128): Elaborating entity "next_state" for hierarchy "next_state:next" File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 15
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(41): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 41
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(41): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 41
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(41): variable "zero" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 41
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(50): variable "zero" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 50
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(52): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 52
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(52): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 52
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(53): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 53
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(54): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 54
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(54): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 54
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(55): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 55
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(55): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 55
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(56): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 56
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(59): variable "sign" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
 Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(61): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 61
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(61): variable "input_c" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 61
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(61): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 61
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(62): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 62
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(63): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 63
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(63): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 63
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(64): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 64
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(64): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 64
 Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(65): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 65
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(65): variable "input_c" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 65
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(65): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 65
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(66): variable "input_r" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 66
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(66): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 66
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(66): variable "input_c" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 66
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(67): variable "input_r" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 67
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(67): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 67
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(67): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 67
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(67): variable "input_c" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 67
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(68): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 68
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(68): variable "input_c" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 68
-Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(68): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 68
-Warning (10240): Verilog HDL Always Construct warning at lab2_task1.sv(54): inferring latch(es) for variable "c", which holds its previous value in one or more paths through the always construct File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 54
-Info (10041): Inferred latch for "c" at lab2_task1.sv(65) File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 65
-Info (12128): Elaborating entity "decoder" for hierarchy "decoder:dec" File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 19
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(68): variable "sign" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 68
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(70): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 70
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(70): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 70
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(71): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 71
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(72): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 72
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(72): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 72
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(73): variable "input_a" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 73
+Warning (10235): Verilog HDL Always Construct warning at lab2_task1.sv(73): variable "left" is read inside the Always Construct but isn't in the Always Construct's Event Control File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 73
+Warning (10240): Verilog HDL Always Construct warning at lab2_task1.sv(39): inferring latch(es) for variable "a", which holds its previous value in one or more paths through the always construct File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 39
+Warning (10240): Verilog HDL Always Construct warning at lab2_task1.sv(39): inferring latch(es) for variable "r", which holds its previous value in one or more paths through the always construct File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 39
+Warning (10240): Verilog HDL Always Construct warning at lab2_task1.sv(39): inferring latch(es) for variable "l", which holds its previous value in one or more paths through the always construct File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 39
+Warning (10240): Verilog HDL Always Construct warning at lab2_task1.sv(39): inferring latch(es) for variable "b", which holds its previous value in one or more paths through the always construct File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 39
+Warning (10240): Verilog HDL Always Construct warning at lab2_task1.sv(39): inferring latch(es) for variable "c", which holds its previous value in one or more paths through the always construct File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 39
+Warning (10240): Verilog HDL Always Construct warning at lab2_task1.sv(39): inferring latch(es) for variable "sign", which holds its previous value in one or more paths through the always construct File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 39
+Warning (10030): Net "zero" at lab2_task1.sv(37) has no driver or initial value, using a default initial value '0' File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 37
+Info (10041): Inferred latch for "sign" at lab2_task1.sv(59) File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
+Info (10041): Inferred latch for "c" at lab2_task1.sv(59) File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
+Info (10041): Inferred latch for "b" at lab2_task1.sv(59) File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
+Info (10041): Inferred latch for "l" at lab2_task1.sv(59) File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
+Info (10041): Inferred latch for "r" at lab2_task1.sv(59) File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
+Info (10041): Inferred latch for "a" at lab2_task1.sv(59) File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 59
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:dec" File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 16
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "l" is missing source, defaulting to GND File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 11
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "la" is stuck at GND File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 10
+    Warning (13410): Pin "lb" is stuck at GND File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 10
+    Warning (13410): Pin "lc" is stuck at GND File: Z:/Users/alenavorobej/AVS/lab2_task1/lab2_task1.sv Line: 10
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 28 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 5 input pins
+Info (21057): Implemented 17 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
     Info (21059): Implemented 6 output pins
-    Info (21061): Implemented 17 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 33 warnings
-    Info: Peak virtual memory: 4820 megabytes
-    Info: Processing ended: Tue Apr 19 11:02:26 2022
-    Info: Elapsed time: 00:00:13
+    Info (21061): Implemented 7 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 45 warnings
+    Info: Peak virtual memory: 4822 megabytes
+    Info: Processing ended: Mon Apr 25 18:18:52 2022
+    Info: Elapsed time: 00:00:14
     Info: Total CPU time (on all processors): 00:00:23
 
 
