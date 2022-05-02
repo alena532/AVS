@@ -36,14 +36,12 @@ or stateCalc(sCl, en, temp);
 flopren reg_lr(clk, reset, en, left, r_lr);// to preserve Left/Right control  // left = 0 => right
 flopren reg_state0(clk, reset, sCl, nexts0, s0);
 flopren reg_state1(clk, reset, sCl, nexts1, s1);
-//flopr reg_state0(clk, reset, nexts0, s0);
-//flopr reg_state1(clk, reset, nexts1, s1);
 
 
 
-and (a,s0, s0); // a = s1 or s0
-or (b, s1, s0); // b = s1 xor s0
-and(c, ns0, s1); // c = ^s1 and s0
+and (a,s0, s0); // a = s0
+or (b, s1, s0); // b = s1 or s0
+and(c, ns0, s1); // c = s1 and ^s0
 
 //---------------------------------
 
@@ -81,10 +79,3 @@ module flopren(input  logic clk, reset, en, d,
     else if (en) q <= d;
 endmodule
 
-module flopr(input  logic clk, reset, d,
-            output logic q);
-            
-  always_ff @(posedge clk, posedge reset)
-    if (reset) q <= 0;
-    else q <= d;
-endmodule

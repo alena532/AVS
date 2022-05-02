@@ -1,106 +1,37 @@
 |lab2_task1
-clk => clk.IN1
-reset => reset.IN1
+clk => clk.IN3
+reset => reset.IN3
 left => left.IN1
-right => right.IN1
-la <= decoder:dec.port5
-lb <= decoder:dec.port6
-lc <= decoder:dec.port7
-ra <= decoder:dec.port8
-rb <= decoder:dec.port9
-rc <= decoder:dec.port10
+right => startmode.IN0
+lc <= preOutLc.DB_MAX_OUTPUT_PORT_TYPE
+lb <= preOutLb.DB_MAX_OUTPUT_PORT_TYPE
+la <= preOutLa.DB_MAX_OUTPUT_PORT_TYPE
+ra <= preOutRa.DB_MAX_OUTPUT_PORT_TYPE
+rb <= preOutRb.DB_MAX_OUTPUT_PORT_TYPE
+rc <= preOutRc.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|lab2_task1|flopr:fl
-clk => q[0]~reg0.CLK
-clk => q[1]~reg0.CLK
-clk => q[2]~reg0.CLK
-clk => q[3]~reg0.CLK
-clk => q[4]~reg0.CLK
-clk => q[5]~reg0.CLK
-clk => q[6]~reg0.CLK
-clk => q[7]~reg0.CLK
-reset => q.OUTPUTSELECT
-reset => q.OUTPUTSELECT
-reset => q.OUTPUTSELECT
-reset => q.OUTPUTSELECT
-reset => q.OUTPUTSELECT
-reset => q.OUTPUTSELECT
-reset => q.OUTPUTSELECT
-reset => q.OUTPUTSELECT
-d[0] => q.DATAA
-d[1] => q.DATAA
-d[2] => q.DATAA
-d[3] => q.DATAA
-d[4] => q.DATAA
-d[5] => q.DATAA
-d[6] => q.DATAA
-d[7] => q.DATAA
-q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-q[4] <= q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-q[5] <= q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-q[6] <= q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-q[7] <= q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|lab2_task1|flopren:reg_lr
+clk => q~reg0.CLK
+reset => q~reg0.ACLR
+en => q~reg0.ENA
+d => q~reg0.DATAIN
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|lab2_task1|next_state:next
-left => a.IN0
-left => l.IN1
-right => a.IN1
-right => r.IN1
-sign1 => ~NO_FANOUT~
-zero1 => ~NO_FANOUT~
-input_l => l.IN0
-input_l => l.IN0
-input_r => r.IN0
-input_r => l.IN1
-input_a => b.IN0
-input_a => l.IN0
-input_a => l.IN0
-input_a => a.IN0
-input_a => a.IN0
-input_b => b.IN1
-input_b => sign.IN0
-input_b => a.IN1
-input_b => r.IN1
-input_b => l.IN1
-input_b => a.IN1
-input_c => sign.IN1
-input_c => a.IN1
-input_c => l.IN1
-input_c => l.IN1
-input_c => a.IN1
-input_c => b.IN1
-l <= l.DB_MAX_OUTPUT_PORT_TYPE
-r <= r.DB_MAX_OUTPUT_PORT_TYPE
-a <= a.DB_MAX_OUTPUT_PORT_TYPE
-b <= b.DB_MAX_OUTPUT_PORT_TYPE
-c <= c$latch.DB_MAX_OUTPUT_PORT_TYPE
-sign <= sign.DB_MAX_OUTPUT_PORT_TYPE
-zero <= <GND>
+|lab2_task1|flopren:reg_state0
+clk => q~reg0.CLK
+reset => q~reg0.ACLR
+en => q~reg0.ENA
+d => q~reg0.DATAIN
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|lab2_task1|decoder:dec
-input_l => la.IN0
-input_l => lb.IN0
-input_l => lc.IN0
-input_r => ra.IN0
-input_r => rb.IN0
-input_r => rc.IN0
-input_a => la.IN1
-input_a => ra.IN1
-input_b => lb.IN1
-input_b => rb.IN1
-input_c => lc.IN1
-input_c => rc.IN1
-la <= la.DB_MAX_OUTPUT_PORT_TYPE
-lb <= lb.DB_MAX_OUTPUT_PORT_TYPE
-lc <= lc.DB_MAX_OUTPUT_PORT_TYPE
-ra <= ra.DB_MAX_OUTPUT_PORT_TYPE
-rb <= rb.DB_MAX_OUTPUT_PORT_TYPE
-rc <= rc.DB_MAX_OUTPUT_PORT_TYPE
+|lab2_task1|flopren:reg_state1
+clk => q~reg0.CLK
+reset => q~reg0.ACLR
+en => q~reg0.ENA
+d => q~reg0.DATAIN
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 

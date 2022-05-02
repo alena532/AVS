@@ -4,6 +4,18 @@
 			"name" : "Top",
 			"pins" : [
 				{
+					"name" : "lc",
+					"strict" : false
+				},
+				{
+					"name" : "lb",
+					"strict" : false
+				},
+				{
+					"name" : "la",
+					"strict" : false
+				},
+				{
 					"name" : "ra",
 					"strict" : false
 				},
@@ -16,19 +28,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "right",
-					"strict" : false
-				},
-				{
 					"name" : "left",
 					"strict" : false
 				},
 				{
-					"name" : "reset",
+					"name" : "right",
 					"strict" : false
 				},
 				{
 					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
 					"strict" : false
 				}
 			]

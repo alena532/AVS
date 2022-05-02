@@ -9,7 +9,7 @@ m: .word 2
 main:
     la t0, n
     lw a0, 0(t0)
-    addi a1,zero,6
+    addi a1,zero,0//первый элемент
     jal tester
     
 	mv t3,a0

@@ -1,32 +1,25 @@
 /// First try
 //  lw
-0010_00 // CC to WT
-0100_00 // WT to SR
-0010_00 // SR to DL without sword
-0000_00 // DL to DC die
+0010_00 // S0 to S1
+0100_00 // S1 to S2
+0010_00 // S2 to S4
+0000_00 // 
 0000_01 // Lose, waiting for reset
 0000_01 // waiting for reset
 0000_01 // waiting for reset
 // Second try
-//0010_00 // CC to WT
-//0100_00 // WT to SR
-//0001_00 // SR to SS with sword
-//0010_00 // SS to SR
-//0010_00 // SR to DL 
-//0000_00 // DL to VV win
-//0000_10 // Win, waiting for reset
+0010_00 // S0 to S1
+0100_00 // S1 to S2
+0001_00 // S2 to S3 
+0010_00 // S3 to S2
+0010_00 // S2 to S4
+0000_00 // DL to VV win
+0000_10 // Win, waiting for reset
 // Third try
-0010_00 // CC to WT
-0100_00 // WT to SR
-0001_00 // SR to SS with sword
-0100_00 // SS to SR
-0000_00 // RV to DC die
+0010_00 // S0 to S1
+0100_00 // S1 to S2
+0001_00 // S2 to S3 
+0100_00 // S3  to S8
+0000_00 // 
 0000_01 // Lose, waiting for reset
-//next
-//0010_00 // CC to WT
-//0100_00 // WT to SR
-//0100_00 // SR to RV 
-//0000_00 // RV to DC win
-//0000_10 // win, waiting for reset
-//0000_10
-//0000_10
+

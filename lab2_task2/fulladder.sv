@@ -31,7 +31,7 @@ module roomfsm(input logic clk, reset,
           else nextstate = S1;
       S2: if (w) nextstate = S3;
           else if (e) nextstate = S4;
-	  else nextstate = S2;
+			 else nextstate = S2;
       S3: if (e) nextstate = S2;
           else if(s) nextstate=S8;
           else nextstate = S3;
